@@ -54,7 +54,9 @@ fi
 # Path check.
 if [ ! -f path.sh ]; then
 	bash local/make_path.sh $kaldi
-	source path.sh; fi
+fi
+
+source path.sh
 
 [ ! -d data ] && mkdir data
 [ -d tmp ] && rm -rf tmp
