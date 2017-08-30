@@ -103,7 +103,7 @@ if [ $model_name == "krs" ]; then
 	cmvn_opts=
 	splice_opts=
 	sdata=tmp/trans_data/split$nj
-	[[ -d $sdata && tmp/trans_data/feats.scp -ot $sdata ]] || split_data.sh tmp/trans_data $nj
+	[[ -d $sdata && tmp/trans_data/feats.scp -ot $sdata ]] || utils/split_data.sh tmp/trans_data $nj
 	feats="ark,s,cs:apply-cmvn $cmvn_opts --utt2spk=ark:$sdata/JOB/utt2spk scp:$sdata/JOB/cmvn.scp scp:$sdata/JOB/feats.scp ark:- | splice-feats $splice_opts ark:- ark:- | transform-feats $model_dir/final.mat ark:- ark:- |"
 
 elif [ $model_name == "diy" ]; then
@@ -120,7 +120,7 @@ elif [ $model_name == "diy" ]; then
 	cmvn_opts=
 	splice_opts=
 	sdata=tmp/trans_data/split$nj
-	[[ -d $sdata && tmp/trans_data/feats.scp -ot $sdata ]] || split_data.sh tmp/trans_data $nj
+	[[ -d $sdata && tmp/trans_data/feats.scp -ot $sdata ]] || utils/split_data.sh tmp/trans_data $nj
 	feats="ark,s,cs:apply-cmvn $cmvn_opts --utt2spk=ark:$sdata/JOB/utt2spk scp:$sdata/JOB/cmvn.scp scp:$sdata/JOB/feats.scp ark:- | splice-feats $splice_opts ark:- ark:- | transform-feats $model_dir/final.mat ark:- ark:- |"
 
 fi
